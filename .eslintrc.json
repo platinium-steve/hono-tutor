@@ -1,0 +1,81 @@
+{{
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "jsdoc"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsdoc/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "jsdoc/require-jsdoc": [
+      "warn",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": true,
+          "FunctionExpression": true
+        }
+      }
+    ]
+  }
+}
+  ],    "@typescript-eslint/explicit-module-boundary-types": "warn",
+
+  "rules": {    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+
+    "jsdoc/require-jsdoc": [    "jsdoc/require-jsdoc": ["warn", {
+
+      "warn",      "require": {
+
+      {        "FunctionDeclaration": true,
+
+        "require": {        "MethodDefinition": true,
+
+          "FunctionDeclaration": true,        "ClassDeclaration": true,
+
+          "MethodDefinition": true,        "ArrowFunctionExpression": true,
+
+          "ClassDeclaration": true,        "FunctionExpression": true
+
+          "ArrowFunctionExpression": true,      }
+
+          "FunctionExpression": true    }]
+
+        }  },
+
+      }  "overrides": [
+
+    ]    {
+
+  }      "files": ["*.ts", "*.tsx"],
+
+}      "plugins": ["jsdoc"],
+
+      "extends": ["plugin:jsdoc/recommended"],
+      "rules": {
+        "jsdoc/require-jsdoc": ["warn", {
+          "require": {
+            "FunctionDeclaration": true,
+            "MethodDefinition": true,
+            "ClassDeclaration": true,
+            "ArrowFunctionExpression": true,
+            "FunctionExpression": true
+          }
+        }]
+      }
+    }
+  ]
+}
