@@ -1,22 +1,15 @@
 import { serve } from '@hono/node-server';
-import app from './app.js';
+import { init } from './app.js';
 import dotenv from 'dotenv';
 
-/**
- * Load environment variables from .env file.
- * @function
- */
+// Load environment variables
 dotenv.config();
 
-/**
- * The port number to run the server on.
- * @type {number}
- */
+// The port number to run the server on
 const port = Number(process.env.PORT) || 3000;
 
-/**
- * Start the Hono server and log the URL.
- * @function
- */
+// Initialize the app
+const app = init();
+
 console.log(`🚀 Server running at http://localhost:${port}`);
 serve({ fetch: app.fetch, port });

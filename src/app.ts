@@ -1,31 +1,32 @@
 import { Hono } from 'hono';
-import { root, user } from './routes/index.js';
+import { usersRoutes } from './routes/index.js';
 import { loggerMiddleware, errorHandler } from './middleware/index.js';
-import { serveStatic } from 'hono/bun';
+import { UserService } from './services/userService.js';
+
+let app: Hono;
 
 /**
- * Main application instance for Hono server.
- * @type {Hono}
+ * Initialize the Hono app, middleware, and routes.
+ * Ensures the app is only created once (singleton).
+ *
+ * @returns {Hono} The configured Hono app instance.
  */
-const app = new Hono();
+export function init(): Hono {
+  if (app) {
+    return app;
+  }
 
-/**
- * Register global error handler middleware for all routes.
- * @function
- */
-app.use('*', errorHandler);
+  app = new Hono();
 
-/**
- * Register global logger middleware for all routes.
- * @function
- */
-app.use('*', loggerMiddleware);
+  // Service layer
+  const userService = new UserService();
 
-/**
- * Register application routes.
- * @function
- */
-app.route('/', root);
-app.route('/users', user);
+  // Global middleware
+  app.use('*', errorHandler);
+  app.use('*', loggerMiddleware);
 
-export default app;
+  // Register routes
+  usersRoutes(app, userService);
+
+  return app;
+}

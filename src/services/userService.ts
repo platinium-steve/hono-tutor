@@ -10,9 +10,7 @@ export interface User {
  * UserService class for user business logic.
  */
 export class UserService {
-  private users: User[] = [
-    { id: 1, name: 'Alice' },
-  ];
+  private users: User[] = [{ id: 1, name: 'Alice' }];
 
   /**
    * Get all users.
@@ -24,7 +22,7 @@ export class UserService {
 
   /**
    * Add a new user.
-   * @param {string} name
+   * @param name - Name of the new user
    * @returns {User}
    */
   addUser(name: string): User {
